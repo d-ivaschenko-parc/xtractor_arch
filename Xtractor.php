@@ -6,18 +6,20 @@
 class Xtractor
 {
 
-    protected $model;
+    protected $models;
 
-    public function __construct($model)
+    public function __construct($models = [])
     {
-        $this->model = $model;
+        $this->models = $models;
     }
 
     public function xtract()
     {
-        $this->model['attributes']['participants'] = (new Participants())->extract($this->model->text);
+        foreach ($this->models as &$model) {
+            $model['attributes']['participants'] = (new Participants())->extract($model->text);
+        }
 
-        return $this->model;
+        return $this->models;
     }
 
 }

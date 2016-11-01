@@ -10,7 +10,7 @@ abstract class Reader
 {
 
     /**
-     * @return \Model[] $model
+     * @return \Model[] $models
      */
     abstract public function read();
 

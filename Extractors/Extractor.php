@@ -10,5 +10,5 @@ abstract class Extractor
      * @param string $text
      * @return mixed
      */
-    abstract public function extract(string $text);
+    abstract public function extract(string $text) : array;
 }

@@ -5,18 +5,25 @@
  */
 class Xtractor
 {
-
+    /** @var Model[]  */
     protected $models;
 
-    public function __construct($models = [])
+    /**
+     * Xtractor constructor.
+     * @param array $models
+     */
+    public function __construct(array $models = [])
     {
         $this->models = $models;
     }
 
-    public function xtract()
+    /**
+     * @return array
+     */
+    public function xtract() : array
     {
         foreach ($this->models as &$model) {
-            $model['attributes']['participants'] = (new Participants())->extract($model->text);
+            $model->attributes['participants'] = (new Participants())->extract($model->text);
         }
 
         return $this->models;

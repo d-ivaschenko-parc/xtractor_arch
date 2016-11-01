@@ -12,6 +12,6 @@ abstract class Reader
     /**
      * @return \Model[] $models
      */
-    abstract public function read();
+    abstract public function read() : array;
 
 }

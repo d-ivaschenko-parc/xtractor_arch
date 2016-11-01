@@ -11,15 +11,17 @@ class FullName extends Extractor
      * @param string $text
      * @return array
      */
-    public function extract(string $text)
+    public function extract(string $text) : array
     {
         return $this->getFullNames($text);
     }
 
+
     /**
-     * @return string
+     * @param $text
+     * @return array
      */
-    protected function getFullNames($text)
+    protected function getFullNames($text) : array
     {
         $result = [];
         if (preg_match_all('(?<fullname>А-Я[а-я]+\s+[А-Я]{1}\.\s+[А-Я]{1}\.)', $text, $matches, PREG_SET_ORDER)) {

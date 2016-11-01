@@ -16,12 +16,16 @@ class Participants extends Extractor
      * @param string $text
      * @return array
      */
-    public function extract(string $text)
+    public function extract(string $text) : array
     {
         return $this->getParticipants($text);
     }
 
-    private function getParticipants(string $text)
+    /**
+     * @param string $text
+     * @return array
+     */
+    private function getParticipants(string $text) : array
     {
         $participants = [];
         if (preg_match_all($this->getRegexp(), $text, $matches, PREG_SET_ORDER)) {
@@ -41,7 +45,7 @@ class Participants extends Extractor
         return $participants;
     }
 
-    private function getRegexp()
+    private function getRegexp() : string
     {
         $participantsOr = '('.implode('|', static::PARTICIPANTS_TYPES).')';
         return '/(?<participantType>'.$participantsOr.')(?<names>.+?)($|'.$participantsOr.')/uis';
